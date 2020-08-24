@@ -1,7 +1,17 @@
 import React from "react";
+import Navbar from "./subcomponents/Navbar";
+import Buttonbar from "./subcomponents/Buttonbar";
+import AddProjectButton from "./subcomponents/AddProjectButton";
 
 function Projects() {
-  return <h2>projects go here</h2>;
+  return (
+    <>
+      <Navbar text="Projects" />
+      <Buttonbar>
+        <AddProjectButton />
+      </Buttonbar>
+    </>
+  );
 }
 
 export default Projects;
