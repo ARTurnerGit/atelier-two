@@ -7,8 +7,17 @@ body {
 }
 
 .App {
+  position: relative;
   width: 320px;
   height: 568px;
   border: 1px black solid;
   padding: 0;
+}
+
+.Buttonbar {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
 }

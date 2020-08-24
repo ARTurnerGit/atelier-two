@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "./subcomponents/Navbar";
-import { Button } from "@material-ui/core";
+import Buttonbar from "./subcomponents/Buttonbar";
+import LoginButton from "./subcomponents/LoginButton";
 
 function Login() {
   return (
     <>
       <Navbar text="Welcome" />
-      <Button />
+      <Buttonbar>
+        <LoginButton />
+      </Buttonbar>
     </>
   );
 }
