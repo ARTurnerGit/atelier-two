@@ -5,15 +5,21 @@ import {
   CardActionArea,
   CardContent,
 } from "@material-ui/core";
+import { navigate } from "@reach/router";
 
-function Project({ name, number, img }) {
+function Project({ project_name, project_id, number, img, user_id }) {
   return (
-    <Card style={{ width: "80%", margin: "8px 0px" }}>
+    <Card
+      style={{ width: "80%", margin: "8px 0px" }}
+      onClick={() => {
+        navigate(`/${user_id}/projects/${project_id}`);
+      }}
+    >
       <CardActionArea>
         <CardContent>
           <img src={img} alt="a building" style={{ height: "64px" }} />
           <Typography>{number}</Typography>
-          <Typography>{name}</Typography>
+          <Typography>{project_name}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>

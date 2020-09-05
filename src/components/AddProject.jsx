@@ -6,7 +6,7 @@ import SaveButton from "./subcomponents/SaveButton";
 
 import { Box, TextField } from "@material-ui/core";
 
-function AddProject({ user }) {
+function AddProject({ user_id }) {
   return (
     <>
       <Navbar text="Add Project" />
@@ -20,8 +20,8 @@ function AddProject({ user }) {
         <TextField variant="outlined" label="Job Number" margin="normal" />
       </Box>
       <Buttonbar>
-        <CancelButton user={user} />
-        <SaveButton user={user} />
+        <CancelButton user_id={user_id} />
+        <SaveButton user_id={user_id} />
       </Buttonbar>
     </>
   );

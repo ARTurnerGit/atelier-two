@@ -43,6 +43,9 @@ body {
   align-items: center;
 }
 
-.AddProject-container > input {
-  margin: 2vh;
+.Visits-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -5,6 +5,7 @@ import { Router } from "@reach/router";
 import Login from "./components/Login";
 import Projects from "./components/Projects";
 import AddProject from "./components/AddProject";
+import Visits from "./components/Visits";
 
 function App() {
   const [user, setUser] = useState({ username: "ceriturner", user_id: "0001" });
@@ -13,8 +14,9 @@ function App() {
     <Box className="App">
       <Router>
         <Login path="/" user={user} />
-        <Projects path="/:user_id/projects" user={user} />
-        <AddProject path="/:user_id/projects/addProject" user={user} />
+        <Projects path="/:user_id/projects" />
+        <AddProject path="/:user_id/projects/addProject" />
+        <Visits path="/:user_id/projects/:project_id" />
       </Router>
     </Box>
   );

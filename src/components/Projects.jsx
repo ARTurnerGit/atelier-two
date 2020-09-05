@@ -7,17 +7,19 @@ import Project from "./subcomponents/Project";
 import { Box } from "@material-ui/core";
 import projectArray from "../data/projectdata";
 
-function Projects({ user }) {
+function Projects({ user_id }) {
   return (
     <>
       <Navbar text="Projects" />
       <Box className="Projects-container">
         {projectArray.map((project) => {
-          return <Project key={project.number} {...project} />;
+          return (
+            <Project key={project.project_id} {...project} user_id={user_id} />
+          );
         })}
       </Box>
       <Buttonbar>
-        <AddProjectButton user={user} />
+        <AddProjectButton user_id={user_id} />
       </Buttonbar>
     </>
   );

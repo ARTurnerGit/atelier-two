@@ -1,18 +1,21 @@
 const projectArray = [];
 const proj1 = {
-  name: "Castleford Drive",
+  project_name: "Castleford Drive",
+  project_id: 2412,
   number: 2412,
   img:
     "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 };
 const proj2 = {
-  name: "The Hawthorns",
+  project_name: "The Hawthorns",
+  project_id: 2413,
   number: 2413,
   img:
     "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 };
 const proj3 = {
-  name: "Buchan Drive",
+  project_name: "Buchan Drive",
+  project_id: 2414,
   number: 2414,
   img:
     "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
