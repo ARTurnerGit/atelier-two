@@ -2,14 +2,14 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import { Link } from "@reach/router";
 
-function LoginButton({ user }) {
+function CancelButton({ user }) {
   return (
     <Link to={`/${user.user_id}/projects`}>
       <Button variant="contained" color="primary">
-        Login
+        Cancel
       </Button>
     </Link>
   );
 }
 
-export default LoginButton;
+export default CancelButton;

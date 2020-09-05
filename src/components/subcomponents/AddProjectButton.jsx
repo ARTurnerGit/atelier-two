@@ -2,9 +2,9 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import { Link } from "@reach/router";
 
-function AddProjectButton() {
+function AddProjectButton({ user }) {
   return (
-    <Link to="/ceri/projects/addProject">
+    <Link to={`/${user.user_id}/projects/addProject`}>
       <Button variant="contained" color="primary">
         Add Project
       </Button>

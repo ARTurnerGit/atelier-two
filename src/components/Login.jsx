@@ -3,12 +3,12 @@ import Navbar from "./subcomponents/Navbar";
 import Buttonbar from "./subcomponents/Buttonbar";
 import LoginButton from "./subcomponents/LoginButton";
 
-function Login() {
+function Login({ user }) {
   return (
     <>
       <Navbar text="Welcome" />
       <Buttonbar>
-        <LoginButton />
+        <LoginButton user={user} />
       </Buttonbar>
     </>
   );
