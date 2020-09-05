@@ -1,5 +1,6 @@
 const entriesArray = [];
 const entry1 = {
+  entry_id: 1234,
   entry_img:
     "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   entry_heading: "The first photo",
@@ -7,6 +8,7 @@ const entry1 = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
 };
 const entry2 = {
+  entry_id: 5678,
   entry_img:
     "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   entry_heading: "Second snap",
@@ -14,6 +16,7 @@ const entry2 = {
     "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
 };
 const entry3 = {
+  entry_id: 9101,
   entry_img:
     "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   entry_heading: "Third",
