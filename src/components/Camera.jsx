@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./subcomponents/Navbar";
 import { Box, Button } from "@material-ui/core";
 import Buttonbar from "./subcomponents/Buttonbar";
@@ -7,7 +7,20 @@ function Camera({ user_id, project_id, visit_id }) {
   // currently hardcoded for 320 x 568 screen
   let width = 320 * 0.95;
   let height = width;
-  console.log();
+
+  const [error, setError] = useState(null);
+  const [viewport, setViewport] = useState(null);
+
+  useEffect(() => {
+    function hasGetUserMedia() {
+      return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+    }
+    if (hasGetUserMedia) {
+      setViewport("Here is your video feed");
+    } else {
+      setError("Not possible to use a camera on this device");
+    }
+  }, []);
   return (
     <>
       <Navbar text={project_id} />
@@ -20,7 +33,7 @@ function Camera({ user_id, project_id, visit_id }) {
             margin: "1vh 0",
           }}
         >
-          This will be the actual viewport
+          {error ? error : viewport}
         </Box>
         <Button variant="outlined">Take the photo</Button>
       </Box>
