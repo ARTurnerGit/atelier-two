@@ -22,7 +22,6 @@ function Camera({ user_id, project_id, visit_id }) {
     if (hasGetUserMedia) {
       navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
         USERFEED.srcObject = stream;
-        console.dir(USERFEED.srcObject);
       });
     } else {
       setError("Not possible to use a camera on this device");
