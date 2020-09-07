@@ -5,22 +5,34 @@ import Buttonbar from "./subcomponents/Buttonbar";
 
 function Camera({ user_id, project_id, visit_id }) {
   // currently hardcoded for 320 x 568 screen
-  let width = 320 * 0.95;
-  let height = width;
-
+  const [width, setWidth] = useState(320 * 0.95);
+  const [height, setHeight] = useState(320 * 0.95);
   const [error, setError] = useState(null);
-  // const [viewport, setViewport] = useState(null);
   const userFeed = useRef(null);
 
   useEffect(() => {
     function hasGetUserMedia() {
       return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
     }
+    const constraints = {
+      video: true,
+    };
+    const USERFEED = userFeed.current;
+
     if (hasGetUserMedia) {
-      // setViewport("Here is your video feed");
+      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        USERFEED.srcObject = stream;
+        console.dir(USERFEED.srcObject);
+      });
     } else {
       setError("Not possible to use a camera on this device");
     }
+
+    return () => {
+      USERFEED.srcObject.getTracks().forEach((track) => {
+        track.stop();
+      });
+    };
   }, []);
   return (
     <>
@@ -37,7 +49,11 @@ function Camera({ user_id, project_id, visit_id }) {
           {error ? (
             <Typography>{error}</Typography>
           ) : (
-            <video ref={userFeed} autoPlay></video>
+            <video
+              ref={userFeed}
+              autoPlay
+              style={{ width: "100%", height: "100%" }}
+            ></video>
           )}
         </Box>
         <Button variant="outlined">Take the photo</Button>
@@ -51,18 +67,6 @@ function Camera({ user_id, project_id, visit_id }) {
         </Button>
       </Buttonbar>
     </>
-    // <div
-    //   style={{
-    //     fontSize: "40px",
-    //     width: "100%",
-    //     height: "100%",
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }}
-    // >
-    //   Camera functionality here
-    // </div>
   );
 }
 
