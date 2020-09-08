@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "./subcomponents/Navbar";
+import ImagePreview from "./subcomponents/ImagePreview";
 import { Box, Button } from "@material-ui/core";
 import Camera, { FACING_MODES } from "react-html5-camera-photo";
-import Buttonbar from "./subcomponents/Buttonbar";
+import "react-html5-camera-photo/build/css/index.css";
 
 function AddEntry({ user_id, project_id, visit_id }) {
   // currently hardcoded for 320 x 568 screen
@@ -21,6 +22,7 @@ function AddEntry({ user_id, project_id, visit_id }) {
 
   return (
     <>
+      {imgData && <ImagePreview imgData={imgData} />}
       <Navbar text={project_id} />
       <Box className="Camera-container">
         <Box
@@ -32,7 +34,6 @@ function AddEntry({ user_id, project_id, visit_id }) {
           }}
         >
           <Camera
-            isFullscreen={true}
             idealResolution={{ width, height }}
             idealFacingMode={FACING_MODES.ENIRONMENT}
             onCameraError={handleCameraError}
@@ -40,16 +41,7 @@ function AddEntry({ user_id, project_id, visit_id }) {
             isDisplayStartCameraError={cameraError}
           />
         </Box>
-        <Button variant="outlined">Take the photo</Button>
       </Box>
-      <Buttonbar>
-        <Button variant="contained" color="primary">
-          Reject
-        </Button>
-        <Button variant="contained" color="primary">
-          Accept
-        </Button>
-      </Buttonbar>
     </>
   );
 }
