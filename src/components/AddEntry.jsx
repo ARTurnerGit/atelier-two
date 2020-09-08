@@ -15,8 +15,8 @@ function AddEntry({ user_id, project_id, visit_id }) {
     setCameraError(true);
   };
 
-  const handleTakePhoto = () => {
-    // do something here
+  const handleTakePhoto = (dataUri) => {
+    setImgData(dataUri);
   };
 
   return (
@@ -24,25 +24,23 @@ function AddEntry({ user_id, project_id, visit_id }) {
       <Navbar text={project_id} />
       <Box className="Camera-container">
         <Box
-          style={{ position: "fixed", top: "0px", left: "0px" }}
-          // style={{
-          //   width: `${width}px`,
-          //   height: `${height}px`,
-          //   border: "2px solid black",
-          //   margin: "1vh 0",
-          // }}
+          style={{
+            width: `${width}px`,
+            height: `${height}px`,
+            border: "2px solid black",
+            margin: "1vh 0",
+          }}
         >
           <Camera
             isFullscreen={true}
-            // idealResolution={{ width, height }}
+            idealResolution={{ width, height }}
             idealFacingMode={FACING_MODES.ENIRONMENT}
             onCameraError={handleCameraError}
+            onTakePhoto={handleTakePhoto}
             isDisplayStartCameraError={cameraError}
           />
         </Box>
-        <Button variant="outlined" onClick={handleTakePhoto}>
-          Take the photo
-        </Button>
+        <Button variant="outlined">Take the photo</Button>
       </Box>
       <Buttonbar>
         <Button variant="contained" color="primary">
