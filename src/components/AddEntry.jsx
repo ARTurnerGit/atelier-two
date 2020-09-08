@@ -8,10 +8,12 @@ function AddEntry({ user_id, project_id, visit_id }) {
   // currently hardcoded for 320 x 568 screen
   const [width, setWidth] = useState(320 * 0.95);
   const [height, setHeight] = useState(320 * 0.95);
+  const [cameraError, setCameraError] = useState(false);
+  const [imgData, setImgData] = useState(null);
   // const userFeed = useRef(null);
 
   const handleCameraError = (error) => {
-    // set an error message
+    setCameraError(true);
   };
 
   const handleTakePhoto = (dataUri) => {
@@ -36,7 +38,7 @@ function AddEntry({ user_id, project_id, visit_id }) {
             idealFacingMode={FACING_MODES.ENIRONMENT}
             onCameraError={handleCameraError}
             onTakePhoto={handleTakePhoto}
-            isDisplayStartCameraError={false}
+            isDisplayStartCameraError={cameraError}
           />
         </Box>
         <Button variant="outlined">Take the photo</Button>
