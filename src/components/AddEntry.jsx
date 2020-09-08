@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./subcomponents/Navbar";
 import ImagePreview from "./subcomponents/ImagePreview";
-import { Box, Button } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import Camera, { FACING_MODES } from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
 
@@ -20,9 +20,12 @@ function AddEntry({ user_id, project_id, visit_id }) {
     setImgData(dataUri);
   };
 
+  const handleRejectPhoto = () => {
+    setImgData(null);
+  };
+
   return (
     <>
-      {imgData && <ImagePreview imgData={imgData} />}
       <Navbar text={project_id} />
       <Box className="Camera-container">
         <Box
@@ -41,6 +44,15 @@ function AddEntry({ user_id, project_id, visit_id }) {
             isDisplayStartCameraError={cameraError}
           />
         </Box>
+        {imgData && (
+          <ImagePreview
+            imgData={imgData}
+            handleRejectPhoto={handleRejectPhoto}
+            user_id={user_id}
+            project_id={project_id}
+            visit_id={visit_id}
+          />
+        )}
       </Box>
     </>
   );
