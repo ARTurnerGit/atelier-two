@@ -10,14 +10,13 @@ function AddEntry({ user_id, project_id, visit_id }) {
   const [height, setHeight] = useState(320 * 0.95);
   const [cameraError, setCameraError] = useState(false);
   const [imgData, setImgData] = useState(null);
-  // const userFeed = useRef(null);
 
   const handleCameraError = (error) => {
     setCameraError(true);
   };
 
-  const handleTakePhoto = (dataUri) => {
-    // save the data somewhere
+  const handleTakePhoto = () => {
+    // do something here
   };
 
   return (
@@ -25,23 +24,25 @@ function AddEntry({ user_id, project_id, visit_id }) {
       <Navbar text={project_id} />
       <Box className="Camera-container">
         <Box
-          style={{
-            width: `${width}px`,
-            height: `${height}px`,
-            border: "2px solid black",
-            margin: "1vh 0",
-          }}
+          style={{ position: "fixed", top: "0px", left: "0px" }}
+          // style={{
+          //   width: `${width}px`,
+          //   height: `${height}px`,
+          //   border: "2px solid black",
+          //   margin: "1vh 0",
+          // }}
         >
           <Camera
-            style={{ width: "100%", height: "100%" }}
-            idealResolution={{ width, height }}
+            isFullscreen={true}
+            // idealResolution={{ width, height }}
             idealFacingMode={FACING_MODES.ENIRONMENT}
             onCameraError={handleCameraError}
-            onTakePhoto={handleTakePhoto}
             isDisplayStartCameraError={cameraError}
           />
         </Box>
-        <Button variant="outlined">Take the photo</Button>
+        <Button variant="outlined" onClick={handleTakePhoto}>
+          Take the photo
+        </Button>
       </Box>
       <Buttonbar>
         <Button variant="contained" color="primary">
