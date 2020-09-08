@@ -8,7 +8,7 @@ import AddProject from "./components/AddProject";
 import Visits from "./components/Visits";
 import AddVisit from "./components/AddVisit";
 import Entries from "./components/Entries";
-import Camera from "./components/Camera";
+import AddEntry from "./components/AddEntry";
 import Output from "./components/Output";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <Visits path="/:user_id/projects/:project_id" />
         <AddVisit path="/:user_id/projects/:project_id/addVisit" />
         <Entries path="/:user_id/projects/:project_id/:visit_id" />
-        <Camera path="/:user_id/projects/:project_id/:visit_id/entry" />
+        <AddEntry path="/:user_id/projects/:project_id/:visit_id/entry" />
         <Output path="/:user_id/projects/:project_id/:visit_id/output" />
       </Router>
     </Box>
