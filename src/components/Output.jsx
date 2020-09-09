@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import Navbar from "./subcomponents/Navbar";
 import { Box, Typography, LinearProgress } from "@material-ui/core";
+import { jsPDF } from "jspdf";
 
 function Output({ user_id, project_id, visit_id }) {
   useEffect(() => {
     console.log("firing on mount");
+    const doc = new jsPDF();
+    doc.text("Hot garbage", 10, 10);
+    doc.save("test.pdf");
   }, []);
 
   return (
