@@ -26,6 +26,7 @@ function Output({ user_id, project_id, visit_id }) {
     entriesArray.forEach((entry, index) => {
       doc.text(`Heading: ${entry.entry_heading}`, 10, 30 + 10 * index);
     });
+    doc.text("Hey Ceri, check out this hot garbage", 10, 70);
 
     doc.save(`${project.project_name}Visit${visit.visit_num}.pdf`);
     setTimeout(() => {
