@@ -65,7 +65,7 @@ body {
   align-items: center;
 }
 
-.Camera-container {
+.AddEntry-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -74,11 +74,11 @@ body {
 
 .ImagePreview-container {
   position: absolute;
-  z-index: 100;
-  height: 90%;
-  width: 100%;
+  z-index: 2;
   display: flex;
+  width: 100%;
+  height: 89%;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-evenly;
 }

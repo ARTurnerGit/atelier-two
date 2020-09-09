@@ -15,21 +15,17 @@ function ImagePreview({
       <Button variant="contained" color="secondary" onClick={handleRejectPhoto}>
         Reject
       </Button>
-      <img
-        src={imgData}
-        alt="screen grab"
-        style={{ transform: "scale(0.5)" }}
-      />
-      <TextField variant="outlined" label="Heading" margin="normal" />
-      <TextField variant="outlined" label="Description" margin="normal" />
+      <img src={imgData} alt="screen grab" />
+      <TextField variant="outlined" label="Heading" margin="dense" />
+      <TextField variant="outlined" label="Description" margin="dense" />
       <Buttonbar>
         <Link to={`/${user_id}/projects/${project_id}/${visit_id}`}>
           <Button variant="contained" color="primary">
-            Save and Finish
+            Finish
           </Button>
         </Link>
         <Button onClick={handleRejectPhoto} variant="contained" color="primary">
-          Save And Continue
+          Continue
         </Button>
       </Buttonbar>
     </Card>

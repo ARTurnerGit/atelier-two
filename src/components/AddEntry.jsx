@@ -27,7 +27,7 @@ function AddEntry({ user_id, project_id, visit_id }) {
   return (
     <>
       <Navbar text={project_id} />
-      <Box className="Camera-container">
+      <Box className="AddEntry-container">
         <Box
           style={{
             width: `${width}px`,
