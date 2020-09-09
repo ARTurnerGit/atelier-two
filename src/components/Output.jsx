@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Navbar from "./subcomponents/Navbar";
+import { Box, Typography, LinearProgress } from "@material-ui/core";
 
-function Output() {
+function Output({ user_id, project_id, visit_id }) {
+  useEffect(() => {
+    console.log("firing on mount");
+  }, []);
+
   return (
-    <div
-      style={{
-        fontSize: "40px",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      Final project output here
-    </div>
+    <Box className="Output-container">
+      <Navbar text="Report"></Navbar>
+      <Typography variant="body1">
+        Generating report for:
+        <br />
+        {project_id}
+        <br />
+        {visit_id}
+      </Typography>
+      <LinearProgress style={{ width: "100%" }} />
+    </Box>
   );
 }
 
