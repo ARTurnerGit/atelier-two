@@ -38,7 +38,7 @@ function AddEntry({ user_id, project_id, visit_id }) {
         >
           <Camera
             idealResolution={{ width, height }}
-            idealFacingMode={FACING_MODES.ENIRONMENT}
+            idealFacingMode={FACING_MODES.ENVIRONMENT}
             onCameraError={handleCameraError}
             onTakePhoto={handleTakePhoto}
             isDisplayStartCameraError={cameraError}
