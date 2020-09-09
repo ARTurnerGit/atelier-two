@@ -1,15 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./subcomponents/Navbar";
-import { Box, Typography, LinearProgress } from "@material-ui/core";
+import { Box, Typography, LinearProgress, Button } from "@material-ui/core";
 import { jsPDF } from "jspdf";
+import { navigate } from "@reach/router";
+
+import projectArray from "../data/projectdata";
+import visitsArray from "../data/visitsdata";
+import entriesArray from "../data/entriesdata";
 
 function Output({ user_id, project_id, visit_id }) {
   useEffect(() => {
     console.log("firing on mount");
     const doc = new jsPDF();
-    doc.text("Hot garbage", 10, 10);
-    doc.save("test.pdf");
+    const project = projectArray.find(
+      (proj) => proj.project_id === Number(project_id)
+    );
+    const visit = visitsArray.find((vis) => vis.visit_id === Number(visit_id));
+
+    doc.text(
+      `Project ID: ${project.project_id}  Project name: ${project.project_name}`,
+      10,
+      10
+    );
+    doc.text(`Visit number: ${visit.visit_num}`, 10, 20);
+    entriesArray.forEach((entry, index) => {
+      doc.text(`Heading: ${entry.entry_heading}`, 10, 30 + 10 * index);
+    });
+
+    doc.save(`${project.project_name}Visit${visit.visit_num}.pdf`);
+    setTimeout(() => {
+      setIsWorking(false);
+    }, 3000);
   }, []);
+
+  const [isWorking, setIsWorking] = useState(true);
 
   return (
     <Box className="Output-container">
@@ -21,7 +45,18 @@ function Output({ user_id, project_id, visit_id }) {
         <br />
         {visit_id}
       </Typography>
-      <LinearProgress style={{ width: "100%" }} />
+      {isWorking ? (
+        <LinearProgress style={{ width: "100%" }} />
+      ) : (
+        <Button
+          variant="outlined"
+          onClick={() => {
+            navigate(`/${user_id}/projects/${project_id}/${visit_id}`);
+          }}
+        >
+          Back
+        </Button>
+      )}
     </Box>
   );
 }
