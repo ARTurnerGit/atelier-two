@@ -13,7 +13,11 @@ function Navbar({ text }) {
             navigate("/");
           }}
         >
-          LOGO HERE
+          <img
+            src={`${process.env.PUBLIC_URL}/images/atelier-two-logo-2090x509.png`}
+            alt="company logo"
+            style={{ width: "100px", background: "white" }}
+          />
         </Button>
       </Toolbar>
     </AppBar>
