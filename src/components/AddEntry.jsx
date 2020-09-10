@@ -42,6 +42,7 @@ function AddEntry({ user_id, project_id, visit_id }) {
             onCameraError={handleCameraError}
             onTakePhoto={handleTakePhoto}
             isDisplayStartCameraError={cameraError}
+            isImageMirror={true}
           />
         </Box>
         {imgData && (
