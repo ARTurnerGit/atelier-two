@@ -16,7 +16,11 @@ function Output({ user_id, project_id, visit_id }) {
     );
     const visit = visitsArray.find((vis) => vis.visit_id === Number(visit_id));
 
-    const drawFirstLogo = () => {
+    const generateNewPage = () => {
+      doc.addPage();
+    };
+
+    const drawFirstPageLogo = () => {
       doc.addImage(
         `${process.env.PUBLIC_URL}/images/atelier-two-header-601x531.png`,
         "PNG",
@@ -24,6 +28,17 @@ function Output({ user_id, project_id, visit_id }) {
         15,
         50,
         45
+      );
+    };
+
+    const drawMidPageLogo = () => {
+      doc.addImage(
+        `${process.env.PUBLIC_URL}/images/atelier-two-logo-2090x509.png`,
+        "PNG",
+        145,
+        15,
+        50,
+        10
       );
     };
 
@@ -46,14 +61,39 @@ function Output({ user_id, project_id, visit_id }) {
     };
 
     const drawBodyItems = () => {
-      entriesArray.forEach((entry, index) => {
-        doc.text(`${entry.entry_heading}`, 15, 110 + 95 * index);
-        doc.text(`${entry.entry_text}`, 15, 115 + 95 * index, { maxWidth: 90 });
-        doc.addImage(entry.entry_img, "JPG", 105, 110 + 95 * index, 90, 90);
+      let bodyItemYOffset = 110;
+      let bodyItemCounter = 0;
+      entriesArray.forEach((entry) => {
+        if (bodyItemYOffset + (bodyItemCounter + 1) * 95 > 285) {
+          generateNewPage();
+          drawMidPageLogo();
+          bodyItemYOffset = 30;
+          bodyItemCounter = 0;
+        }
+        doc.text(
+          `${entry.entry_heading}`,
+          15,
+          bodyItemYOffset + 95 * bodyItemCounter
+        );
+        doc.text(
+          `${entry.entry_text}`,
+          15,
+          bodyItemYOffset + 5 + 95 * bodyItemCounter,
+          { maxWidth: 90 }
+        );
+        doc.addImage(
+          entry.entry_img,
+          "JPG",
+          105,
+          bodyItemYOffset + 95 * bodyItemCounter,
+          90,
+          90
+        );
+        bodyItemCounter++;
       });
     };
 
-    drawFirstLogo();
+    drawFirstPageLogo();
     drawIntro();
     drawBodyItems();
 
