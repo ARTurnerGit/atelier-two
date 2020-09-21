@@ -45,8 +45,17 @@ function Output({ user_id, project_id, visit_id }) {
       );
     };
 
+    const drawBodyItems = () => {
+      entriesArray.forEach((entry, index) => {
+        doc.text(`${entry.entry_heading}`, 15, 110 + 95 * index);
+        doc.text(`${entry.entry_text}`, 15, 115 + 95 * index, { maxWidth: 90 });
+        doc.addImage(entry.entry_img, "JPG", 105, 110 + 95 * index, 90, 90);
+      });
+    };
+
     drawFirstLogo();
     drawIntro();
+    drawBodyItems();
 
     // doc.text(
     //   `Project ID: ${project.project_id}  Project name: ${project.project_name}`,
