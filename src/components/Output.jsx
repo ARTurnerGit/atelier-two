@@ -27,7 +27,26 @@ function Output({ user_id, project_id, visit_id }) {
       );
     };
 
+    const drawIntro = () => {
+      doc.text(
+        `SITE REPORT ${visit.visit_num
+          .toString()
+          .padStart(2, 0)}\nDATE ${visit.visit_date.toDateString()}`,
+        15,
+        30
+      );
+      doc.text("Project\nJob No.\n\nTime\nAttending\nWeather\nStage", 15, 50);
+      doc.text(
+        `${project.project_name}\n${
+          project.number
+        }\n\n${visit.visit_date.toTimeString()}\nunknown\nunknown\nunknown`,
+        40,
+        50
+      );
+    };
+
     drawFirstLogo();
+    drawIntro();
 
     // doc.text(
     //   `Project ID: ${project.project_id}  Project name: ${project.project_name}`,
