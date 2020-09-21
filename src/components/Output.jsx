@@ -57,17 +57,6 @@ function Output({ user_id, project_id, visit_id }) {
     drawIntro();
     drawBodyItems();
 
-    // doc.text(
-    //   `Project ID: ${project.project_id}  Project name: ${project.project_name}`,
-    //   10,
-    //   10
-    // );
-    // doc.text(`Visit number: ${visit.visit_num}`, 10, 20);
-    // entriesArray.forEach((entry, index) => {
-    //   doc.text(`Heading: ${entry.entry_heading}`, 10, 30 + 10 * index);
-    // });
-    // doc.text("Hey Ceri, check out this hot garbage", 10, 70);
-
     doc.save(`${project.project_name}Visit${visit.visit_num}.pdf`);
     setTimeout(() => {
       setIsWorking(false);
