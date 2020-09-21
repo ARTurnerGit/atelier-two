@@ -76,7 +76,7 @@ function Output({ user_id, project_id, visit_id }) {
       );
     };
 
-    const drawBodyItems = () => {
+    const drawBodyItemsAndFinalBlock = () => {
       let bodyItemYOffset = 110;
       let bodyItemCounter = 0;
       entriesArray.forEach((entry) => {
@@ -107,11 +107,16 @@ function Output({ user_id, project_id, visit_id }) {
         );
         bodyItemCounter++;
       });
+      doc.text(
+        `Agreed Variations\n\nSomething will be written here\n\nArchitectural Actions\n\nLiase with somebody\nIncorporate something\nUpdate something or other\n\nNext Visit - TBC\n\nReport undertaken by\n\n\n\nSIGNATURE BLOCK HERE`,
+        15,
+        bodyItemYOffset + 95 * bodyItemCounter
+      );
     };
 
     drawFirstPageLogoAndFooter();
     drawIntro();
-    drawBodyItems();
+    drawBodyItemsAndFinalBlock();
 
     doc.save(`${project.project_name}Visit${visit.visit_num}.pdf`);
     setTimeout(() => {
