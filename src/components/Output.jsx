@@ -20,7 +20,7 @@ function Output({ user_id, project_id, visit_id }) {
       doc.addPage();
     };
 
-    const drawFirstPageLogo = () => {
+    const drawFirstPageLogoAndFooter = () => {
       doc.addImage(
         `${process.env.PUBLIC_URL}/images/atelier-two-header-601x531.png`,
         "PNG",
@@ -29,15 +29,31 @@ function Output({ user_id, project_id, visit_id }) {
         50,
         45
       );
+      doc.addImage(
+        `${process.env.PUBLIC_URL}/images/atelier-two-footer-2480x160.png`,
+        "PNG",
+        0,
+        285,
+        210,
+        10
+      );
     };
 
-    const drawMidPageLogo = () => {
+    const drawMidPageLogoAndFooter = () => {
       doc.addImage(
         `${process.env.PUBLIC_URL}/images/atelier-two-logo-2090x509.png`,
         "PNG",
         145,
-        15,
+        0,
         50,
+        10
+      );
+      doc.addImage(
+        `${process.env.PUBLIC_URL}/images/atelier-two-footer-2480x160.png`,
+        "PNG",
+        15,
+        285,
+        210,
         10
       );
     };
@@ -66,7 +82,7 @@ function Output({ user_id, project_id, visit_id }) {
       entriesArray.forEach((entry) => {
         if (bodyItemYOffset + (bodyItemCounter + 1) * 95 > 285) {
           generateNewPage();
-          drawMidPageLogo();
+          drawMidPageLogoAndFooter();
           bodyItemYOffset = 30;
           bodyItemCounter = 0;
         }
@@ -93,7 +109,7 @@ function Output({ user_id, project_id, visit_id }) {
       });
     };
 
-    drawFirstPageLogo();
+    drawFirstPageLogoAndFooter();
     drawIntro();
     drawBodyItems();
 
