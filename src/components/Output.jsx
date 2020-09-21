@@ -8,9 +8,13 @@ import projectArray from "../data/projectdata";
 import visitsArray from "../data/visitsdata";
 import entriesArray from "../data/entriesdata";
 
+const nunitoSans = require("../resources/NunitoSans-Light-normal");
+
 function Output({ user_id, project_id, visit_id }) {
   useEffect(() => {
     const doc = new jsPDF({ unit: "mm" });
+    doc.setFont("NunitoSans-Light", "normal");
+    doc.setFontSize(11);
     const project = projectArray.find(
       (proj) => proj.project_id === Number(project_id)
     );
