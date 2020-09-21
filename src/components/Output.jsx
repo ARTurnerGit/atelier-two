@@ -10,23 +10,35 @@ import entriesArray from "../data/entriesdata";
 
 function Output({ user_id, project_id, visit_id }) {
   useEffect(() => {
-    console.log("firing on mount");
-    const doc = new jsPDF();
+    const doc = new jsPDF({ unit: "mm" });
     const project = projectArray.find(
       (proj) => proj.project_id === Number(project_id)
     );
     const visit = visitsArray.find((vis) => vis.visit_id === Number(visit_id));
 
-    doc.text(
-      `Project ID: ${project.project_id}  Project name: ${project.project_name}`,
-      10,
-      10
-    );
-    doc.text(`Visit number: ${visit.visit_num}`, 10, 20);
-    entriesArray.forEach((entry, index) => {
-      doc.text(`Heading: ${entry.entry_heading}`, 10, 30 + 10 * index);
-    });
-    doc.text("Hey Ceri, check out this hot garbage", 10, 70);
+    const drawFirstLogo = () => {
+      doc.addImage(
+        `${process.env.PUBLIC_URL}/images/atelier-two-header-601x531.png`,
+        "PNG",
+        145,
+        15,
+        50,
+        45
+      );
+    };
+
+    drawFirstLogo();
+
+    // doc.text(
+    //   `Project ID: ${project.project_id}  Project name: ${project.project_name}`,
+    //   10,
+    //   10
+    // );
+    // doc.text(`Visit number: ${visit.visit_num}`, 10, 20);
+    // entriesArray.forEach((entry, index) => {
+    //   doc.text(`Heading: ${entry.entry_heading}`, 10, 30 + 10 * index);
+    // });
+    // doc.text("Hey Ceri, check out this hot garbage", 10, 70);
 
     doc.save(`${project.project_name}Visit${visit.visit_num}.pdf`);
     setTimeout(() => {
