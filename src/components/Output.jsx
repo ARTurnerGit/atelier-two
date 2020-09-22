@@ -18,8 +18,8 @@ require("../resources/NunitoSans-SemiBold-normal");
 function Output({ user_id, project_id, visit_id }) {
   useEffect(() => {
     const doc = new jsPDF({ unit: "mm" });
-    doc.setFont("NunitoSans-Light", "normal");
-    doc.setFontSize(11);
+    // doc.setFont("NunitoSans-Light", "normal");
+    // doc.setFontSize(11);
     const project = projectArray.find(
       (proj) => proj.project_id === Number(project_id)
     );
@@ -53,9 +53,9 @@ function Output({ user_id, project_id, visit_id }) {
         `${process.env.PUBLIC_URL}/images/atelier-two-logo-2090x509.png`,
         "PNG",
         145,
-        0,
+        15,
         50,
-        10
+        12
       );
       doc.addImage(
         `${process.env.PUBLIC_URL}/images/atelier-two-footer-2480x160.png`,
@@ -68,20 +68,32 @@ function Output({ user_id, project_id, visit_id }) {
     };
 
     const drawIntro = () => {
+      doc
+        .setFont("NunitoSans-SemiBold", "normal")
+        .setFontSize(15)
+        .text(
+          `SITE REPORT ${visit.visit_num.toString().padStart(2, 0)}`,
+          15,
+          30
+        );
+      doc
+        .setFont("NunitoSans-ExtraLight", "normal")
+        .text(`DATE ${visit.visit_date.toDateString()}`, 15, 40);
+      doc
+        .setFontSize(14)
+        .text(
+          `Project      ${project.project_name}\nJob No.      ${project.number}`,
+          15,
+          50
+        );
+      doc
+        .setFont("NunitoSans-Light", "normal")
+        .setFontSize(10)
+        .text("Time\nAttending\nWeather\nStage", 15, 70);
       doc.text(
-        `SITE REPORT ${visit.visit_num
-          .toString()
-          .padStart(2, 0)}\nDATE ${visit.visit_date.toDateString()}`,
-        15,
-        30
-      );
-      doc.text("Project\nJob No.\n\nTime\nAttending\nWeather\nStage", 15, 50);
-      doc.text(
-        `${project.project_name}\n${
-          project.number
-        }\n\n${visit.visit_date.toTimeString()}\nunknown\nunknown\nunknown`,
+        `${visit.visit_date.toTimeString()}\nunknown\nunknown\nunknown`,
         40,
-        50
+        70
       );
     };
 
@@ -95,17 +107,21 @@ function Output({ user_id, project_id, visit_id }) {
           bodyItemYOffset = 30;
           bodyItemCounter = 0;
         }
-        doc.text(
-          `${entry.entry_heading}`,
-          15,
-          bodyItemYOffset + 95 * bodyItemCounter
-        );
-        doc.text(
-          `${entry.entry_text}`,
-          15,
-          bodyItemYOffset + 5 + 95 * bodyItemCounter,
-          { maxWidth: 90 }
-        );
+        doc
+          .setFont("NunitoSans-Regular", "normal")
+          .text(
+            `${entry.entry_heading}`,
+            15,
+            bodyItemYOffset + 95 * bodyItemCounter
+          );
+        doc
+          .setFont("NunitoSans-Light", "normal")
+          .text(
+            `${entry.entry_text}`,
+            15,
+            bodyItemYOffset + 5 + 95 * bodyItemCounter,
+            { maxWidth: 90 }
+          );
         doc.addImage(
           entry.entry_img,
           "JPG",
