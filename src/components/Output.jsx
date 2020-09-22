@@ -76,7 +76,7 @@ function Output({ user_id, project_id, visit_id }) {
         );
       doc
         .setFont("NunitoSans-ExtraLight", "normal")
-        .text(`DATE ${visit.visit_date.toDateString()}`, 15, 40);
+        .text(`DATE ${visit.visit_date.toDateString()}`, 15, 35);
       doc
         .setFontSize(14)
         .text(
@@ -130,11 +130,34 @@ function Output({ user_id, project_id, visit_id }) {
         );
         bodyItemCounter++;
       });
-      doc.text(
-        `Agreed Variations\n\nSomething will be written here\n\nArchitectural Actions\n\nLiase with somebody\nIncorporate something\nUpdate something or other\n\nNext Visit - TBC\n\nReport undertaken by\n\n\n\nSIGNATURE BLOCK HERE`,
-        15,
-        bodyItemYOffset + 95 * bodyItemCounter
-      );
+      doc
+        .setFont("NunitoSans-SemiBold", "normal")
+        .text("Agreed Variations", 15, bodyItemYOffset + 95 * bodyItemCounter);
+      doc
+        .setFont("NunitoSans-Regular", "normal")
+        .text("", 15, bodyItemYOffset + 95 * bodyItemCounter + 5);
+      doc
+        .setFont("NunitoSans-Light", "normal")
+        .text(
+          "Impact: Something here\nActions: Something here",
+          15,
+          bodyItemYOffset + 95 * bodyItemCounter + 10
+        );
+      doc
+        .setFont("NunitoSans-Regular", "normal")
+        .text("", 15, bodyItemYOffset + 95 * bodyItemCounter + 20);
+      doc
+        .setFont("NunitoSans-Light", "normal")
+        .text(
+          "Impact: Something here\nActions: Something here",
+          15,
+          bodyItemYOffset + 95 * bodyItemCounter + 25
+        );
+
+      //   `Agreed Variations\n\nSomething will be written here\n\nArchitectural Actions\n\nLiase with somebody\nIncorporate something\nUpdate something or other\n\nNext Visit - TBC\n\nReport undertaken by\n\n\n\nSIGNATURE BLOCK HERE`,
+      //   15,
+      //   bodyItemYOffset + 95 * bodyItemCounter
+      // );
     };
 
     drawFirstPageLogoAndFooter();
