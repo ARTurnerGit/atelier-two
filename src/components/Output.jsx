@@ -4,11 +4,16 @@ import { Box, Typography, LinearProgress, Button } from "@material-ui/core";
 import { jsPDF } from "jspdf";
 import { navigate } from "@reach/router";
 
+// mock data
 import projectArray from "../data/projectdata";
 import visitsArray from "../data/visitsdata";
 import entriesArray from "../data/entriesdata";
 
-const nunitoSans = require("../resources/NunitoSans-Light-normal");
+// pdf fonts
+require("../resources/NunitoSans-Light-normal");
+require("../resources/NunitoSans-ExtraLight-normal");
+require("../resources/NunitoSans-Regular-normal");
+require("../resources/NunitoSans-SemiBold-normal");
 
 function Output({ user_id, project_id, visit_id }) {
   useEffect(() => {
