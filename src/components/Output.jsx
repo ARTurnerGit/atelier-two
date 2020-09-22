@@ -40,7 +40,7 @@ function Output({ user_id, project_id, visit_id }) {
         `${process.env.PUBLIC_URL}/images/atelier-two-footer-2480x160.png`,
         "PNG",
         0,
-        285,
+        280,
         210,
         10
       );
@@ -58,8 +58,8 @@ function Output({ user_id, project_id, visit_id }) {
       doc.addImage(
         `${process.env.PUBLIC_URL}/images/atelier-two-footer-2480x160.png`,
         "PNG",
-        15,
-        285,
+        0,
+        280,
         210,
         10
       );
