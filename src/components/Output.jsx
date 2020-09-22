@@ -18,8 +18,6 @@ require("../resources/NunitoSans-SemiBold-normal");
 function Output({ user_id, project_id, visit_id }) {
   useEffect(() => {
     const doc = new jsPDF({ unit: "mm" });
-    // doc.setFont("NunitoSans-Light", "normal");
-    // doc.setFontSize(11);
     const project = projectArray.find(
       (proj) => proj.project_id === Number(project_id)
     );
