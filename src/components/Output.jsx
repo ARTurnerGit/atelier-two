@@ -153,11 +153,13 @@ function Output({ user_id, project_id, visit_id }) {
           15,
           bodyItemYOffset + 95 * bodyItemCounter + 25
         );
-
-      //   `Agreed Variations\n\nSomething will be written here\n\nArchitectural Actions\n\nLiase with somebody\nIncorporate something\nUpdate something or other\n\nNext Visit - TBC\n\nReport undertaken by\n\n\n\nSIGNATURE BLOCK HERE`,
-      //   15,
-      //   bodyItemYOffset + 95 * bodyItemCounter
-      // );
+      doc.addImage(
+        `${process.env.PUBLIC_URL}/images/atelier-two-signature-634x589.png`,
+        130,
+        bodyItemYOffset + 95 * bodyItemCounter + 5,
+        50,
+        50
+      );
     };
 
     drawFirstPageLogoAndFooter();
